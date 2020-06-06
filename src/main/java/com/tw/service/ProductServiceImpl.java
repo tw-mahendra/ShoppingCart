@@ -21,13 +21,12 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Products addProduct(Products products) {
+        products.set_id(UUID.randomUUID());
         return productRepository.save(products);
     }
 
     @Override
     public Products findById(UUID id) {
-        Products products = productRepository.findById(id).get();
-        return products;
+        return productRepository.findById(id).get();
     }
-
 }

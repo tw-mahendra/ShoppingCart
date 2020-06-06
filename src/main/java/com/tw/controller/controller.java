@@ -1,6 +1,8 @@
 package com.tw.controller;
 
+import com.tw.model.Cart;
 import com.tw.model.Products;
+import com.tw.service.CartService;
 import com.tw.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class controller {
 
     @Autowired
     ProductServiceImpl productServiceImpl;
+
+    @Autowired
+    CartService cartService;
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
@@ -36,4 +41,9 @@ public class controller {
         return new ResponseEntity<List<Products>>(allProducts,HttpStatus.OK);
     }
 
+    @PostMapping("/cart")
+    public ResponseEntity<Cart> addToCart(@RequestBody Cart cart){
+        Cart toCart = cartService.saveToCart(cart);
+        return new ResponseEntity<>(toCart,HttpStatus.ACCEPTED);
+    }
 }
