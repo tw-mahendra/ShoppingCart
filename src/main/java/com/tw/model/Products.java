@@ -20,32 +20,4 @@ public class Products {
     private String description;
     private int quantityInStock;
     private double price;
-
-//    public Products(String productName, String description, int quantityInStock, double price) {
-//        this._id = UUID.randomUUID();
-//        this.productName = productName;
-//        this.description = description;
-//        this.quantityInStock = quantityInStock;
-//        this.price = price;
-//    }
-//
-//    public UUID get_id() {
-//        return _id;
-//    }
-//
-//    public String getProductName() {
-//        return productName;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public int getQuantityInStock() {
-//        return quantityInStock;
-//    }
-//
-//    public double getPrice() {
-//        return price;
-//    }
 }
