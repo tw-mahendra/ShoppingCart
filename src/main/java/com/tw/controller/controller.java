@@ -1,5 +1,6 @@
 package com.tw.controller;
 
+import com.tw.exception.ProductException;
 import com.tw.model.Cart;
 import com.tw.model.Products;
 import com.tw.service.CartService;
@@ -42,8 +43,32 @@ public class controller {
     }
 
     @PostMapping("/cart")
-    public ResponseEntity<Cart> addToCart(@RequestBody Cart cart){
+    public ResponseEntity<Cart> addToCart(@RequestBody Cart cart) throws ProductException {
         Cart toCart = cartService.saveToCart(cart);
         return new ResponseEntity<>(toCart,HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/showcart/{mobile}")
+    public ResponseEntity<List<Cart>>showCart(@PathVariable (value = "mobile") String mobile) {
+        List<Cart> cartList = cartService.showCart(mobile);
+        return new ResponseEntity<>(cartList,HttpStatus.OK);
+    }
+
+    @GetMapping("cart")
+    public ResponseEntity<List<Cart>>allCart() {
+        List<Cart> cartList = cartService.allCart();
+        return new ResponseEntity<>(cartList,HttpStatus.OK);
+    }
+
+    @PostMapping("confirm/{id}")
+    public ResponseEntity<String> confirmOrder(@PathVariable (value = "id") UUID id) throws ProductException {
+        cartService.confirmOrder(id);
+        return new ResponseEntity<>("Order Confirmed",HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("remove/{id}")
+    public ResponseEntity<String> removeOrder(@PathVariable (value = "id") UUID id) throws ProductException {
+        cartService.removeOrder(id);
+        return new ResponseEntity<>("Order Removed",HttpStatus.ACCEPTED);
     }
 }

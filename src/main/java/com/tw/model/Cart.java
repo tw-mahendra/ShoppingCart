@@ -17,6 +17,8 @@ import java.util.UUID;
 public class Cart {
     private UUID _id;
     private String customerName;
+    private String mobile;
     private List<OrderDetails> orderDetails;
     private double totalAmount;
+    private OrderStatus status;
 }

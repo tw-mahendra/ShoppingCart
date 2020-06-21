@@ -1,5 +1,7 @@
 package com.tw.service;
 
+import com.tw.exception.ProductException;
+import com.tw.model.OrderDetails;
 import com.tw.model.Products;
 
 import java.util.List;
@@ -12,4 +14,6 @@ public interface IProductService {
     Products addProduct(Products products);
 
     Products findById(UUID id);
+
+    void updateProducts(List<OrderDetails> orderDetails) throws ProductException;
 }

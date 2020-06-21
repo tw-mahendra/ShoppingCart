@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
 @Data
 public class OrderDetails {
-    private String productId;
-    private String productQty;
+    private UUID productId;
+    private int productQty;
     private Double productPrice;
 }
